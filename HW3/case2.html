@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case 2</title>
+    <!-- CDN Libarary Javascript Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <script>
+      (async () => {
+        // Membuat Prompt input dengan type Select
+        const { value: vechile } = await Swal.fire({
+          title: "Select your vechile",
+          input: "select",
+          inputOptions: {
+            Platkuning: "Plat Kuning",
+            Motor: "Motor",
+            Mobil: "Mobil",
+          },
+          inputPlaceholder: "Select a Vechile",
+          showCancelButton: true,
+        });
+
+        // Membuat Prompt Input untuk Jumlah CC Kendaraan
+        const { value: cc } = await Swal.fire({
+          title: "Enter CC",
+          input: "number",
+          inputPlaceholder: "Enter your CC !",
+        });
+
+        if (vechile && cc) {
+          // Mendekskirpsikan Variabel
+          const vechiles = vechile;
+          const vechileCc = cc;
+
+          // Pengkondisian menggunakan ternary operator
+          const condition =
+            (vechiles == "Motor" && vechileCc) ||
+            (vechiles == "Platkuning" && vechileCc)
+              ? "BBM Subsidi"
+              : vechiles == "Mobil" && vechileCc < 1500
+              ? "PERTAMAX"
+              : vechiles == "Mobil" && vechileCc >= 1500
+              ? "PERTAMAX TURBO"
+              : "Tidak Terdefinisi";
+
+          // Custom Alert untuk menampilkan Result
+          await Swal.fire({
+            title: "Result :",
+            text: `Kendaraan : "${vechiles}" dengan CC : "${vechileCc}" menggunakan bahan bakar : "${condition}"`,
+            icon: "success",
+            confirmButtonText: "Case 1",
+          }).then((result) => {
+            // tombol untuk mengarahkan ke halaman case 1
+            if (result) {
+              window.location.href = "index.html";
+            }
+          });
+        } else {
+          // Apabila Value Tidak Terpenuhi
+          Swal.fire({
+            title: "Undefined",
+            text: "Please Enter the Correct Input",
+            icon: "error",
+            confirmButtonText: "Next",
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
