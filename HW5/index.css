@@ -16,6 +16,15 @@ body {
   ) !important;
 }
 
+#alert-table {
+  background: linear-gradient(
+    10deg,
+    var(--soft) 0%,
+    var(--teritiary) 100%
+  ) !important;
+}
+
+/* Custom Class */
 .bg-card {
   background: linear-gradient(
     90deg,

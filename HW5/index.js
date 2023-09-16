@@ -6,6 +6,7 @@ const btnSubmit = document.getElementById("submit");
 const btnRegister = document.getElementById("register");
 const btnData = document.getElementById("data");
 const alert = document.getElementById("alert");
+const alertTable = document.getElementById("alert-table");
 const ageArr = [];
 const allowanceArr = [];
 let totalAgeArr;
@@ -91,6 +92,8 @@ form.addEventListener("submit", async function (e) {
   setTimeout(function () {
     form.classList.add("d-none");
     table.classList.remove("d-none");
+    alertTable.classList.add("d-none");
+    document.getElementById("table").classList.remove("d-none");
   }, 2000);
 });
 
@@ -100,6 +103,11 @@ btnRegister.addEventListener("click", () => {
 });
 
 btnData.addEventListener("click", () => {
+  if (ageArr.length == 0) {
+    alertTable.classList.remove("d-none");
+    document.getElementById("table").classList.add("d-none");
+  }
+
   form.classList.add("d-none");
   table.classList.remove("d-none");
 });
