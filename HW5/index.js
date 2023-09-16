@@ -68,8 +68,8 @@ form.addEventListener("submit", async function (e) {
   totalAgeArr = ageArr.reduce(getTotal);
   totalAllowanceArr = allowanceArr.reduce(getTotal);
   // Get Average Array
-  ageAverage = getAverage(totalAgeArr, ...ageArr);
-  allowanceAverage = getAverage(totalAllowanceArr, ...allowanceArr);
+  ageAverage = getAverage(totalAgeArr, ...ageArr).toFixed(0);
+  allowanceAverage = getAverage(totalAllowanceArr, ...allowanceArr).toFixed(0);
   // Push data to Class
   no = ageArr.length;
   const employee = new Employee(
@@ -107,7 +107,6 @@ btnData.addEventListener("click", () => {
     alertTable.classList.remove("d-none");
     document.getElementById("table").classList.add("d-none");
   }
-
   form.classList.add("d-none");
   table.classList.remove("d-none");
 });
