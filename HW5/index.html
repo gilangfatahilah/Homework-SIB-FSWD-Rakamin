@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HW - FSWD - WEEK 5</title>
+    <!-- Css -->
+    <link rel="stylesheet" href="index.css" />
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container w-50 mt-5">
+      <div class="container w-50 mx-auto text-center p-3">
+        <button class="btn btn-soft" id="register">Form Registrasi</button>
+        <button class="btn btn-soft" id="data">Data Karyawan</button>
+      </div>
+
+      <div class="card bg-card pb-5 text-white">
+        <div class="alert alert-success d-none" id="alert" role="alert">
+          Data Berhasil Ditambahkan !
+        </div>
+        <form class="row w-75 g-3 p-3 mx-auto form" name="form" id="form">
+          <h1 class="text-center pt-3 fw-bold fs-3">Form Registrasi</h1>
+          <div class="col-md-12">
+            <label for="name" class="form-label">Nama</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder="Masukan nama anda!"
+              minlength="10"
+              value="asep wirawan"
+              required
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="age" class="form-label">Usia</label>
+            <input
+              type="number"
+              class="form-control"
+              id="age"
+              name="age"
+              min="25"
+              value="25"
+              placeholder="Masukan Usia Anda!"
+              required
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="allowance" class="form-label">Uang Saku</label>
+            <input
+              type="number"
+              class="form-control"
+              id="allowance"
+              name="allowance"
+              placeholder="Masukan Nominal Uang Saku Anda!"
+              value="100000"
+              min="100000"
+              max="1000000"
+              required
+            />
+          </div>
+          <div class="col-12 mx-auto">
+            <input
+              class="btn btn-soft"
+              name="submit"
+              type="submit"
+              value="Submit Data"
+              id="submit"
+            />
+          </div>
+        </form>
+        <div class="table-card mx-auto p-5 d-none" id="table-container">
+          <h1 class="text-center pt-3 fw-bold fs-3">Data Pendaftar</h1>
+          <table
+            class="table table-bordered border-black text-center border-1"
+            id="table"
+          >
+            <thead class="table-primary">
+              <th scope="col">No.</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Umur</th>
+              <th scope="col">Uang Saku</th>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <p class="fw-medium text-white" id="resume"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="index.js"></script>
+    <!-- Bootstrap Js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
