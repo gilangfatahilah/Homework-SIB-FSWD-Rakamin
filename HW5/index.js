@@ -54,12 +54,12 @@ function getAverage(total, ...arr) {
 }
 
 // Button handlers
-form.addEventListener("submit", async function (e) {
+form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const name = await document.getElementById("name").value;
-  const age = parseInt(await document.getElementById("age").value);
-  const allowance = parseInt(await document.getElementById("allowance").value);
+  const name = document.getElementById("name").value;
+  const age = parseInt(document.getElementById("age").value);
+  const allowance = parseInt(document.getElementById("allowance").value);
 
   // Push Array
   ageArr.push(age);
@@ -88,7 +88,7 @@ form.addEventListener("submit", async function (e) {
   setTimeout(function () {
     alert.classList.add("d-none");
   }, 2000);
-
+  // Remove Alert
   setTimeout(function () {
     form.classList.add("d-none");
     table.classList.remove("d-none");
@@ -103,6 +103,7 @@ btnRegister.addEventListener("click", () => {
 });
 
 btnData.addEventListener("click", () => {
+  // When data is empty
   if (ageArr.length == 0) {
     alertTable.classList.remove("d-none");
     document.getElementById("table").classList.add("d-none");
