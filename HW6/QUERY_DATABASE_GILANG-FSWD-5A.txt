@@ -1,0 +1,154 @@
+Nama : Gilang Fatahilah Akbar
+Kelas : FSWD - 5A (kelompok 2)
+
+
+// 1. Inisialisasi POSTGRESQL dan Membuat database baru //
+
+C:\Users\gilan>psql --username=postgres
+Password for user postgres:
+psql (16.0)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# CREATE DATABASE db_barang;
+CREATE DATABASE
+postgres=# \l
+                                                                  List of databases
+   Name    |  Owner   | Encoding | Locale Provider |        Collate         |         Ctype          | ICU Locale | ICU Rules |   Access privileges
+
+-----------+----------+----------+-----------------+------------------------+------------------------+------------+-----------+-----------------------
+ db_barang | postgres | UTF8     | libc            | English_Indonesia.1252 | English_Indonesia.1252 |            |           |
+ postgres  | postgres | UTF8     | libc            | English_Indonesia.1252 | English_Indonesia.1252 |            |           |
+ template0 | postgres | UTF8     | libc            | English_Indonesia.1252 | English_Indonesia.1252 |            |           | =c/postgres
+ +
+           |          |          |                 |                        |                        |            |           | postgres=CTc/postgres
+ template1 | postgres | UTF8     | libc            | English_Indonesia.1252 | English_Indonesia.1252 |            |           | =c/postgres
+ +
+           |          |          |                 |                        |                        |            |           | postgres=CTc/postgres
+(4 rows)
+
+postgres=# \c db_barang;
+You are now connected to database "db_barang" as user "postgres".
+
+// 2. Membuat Tabel baru di dalam database//
+
+db_barang=# CREATE TABLE barang (id int primary key not null, kategori_id int not null, nama varchar (20) not null, harga int not null, stok int not
+ null, created_at date, updated_at date);
+CREATE TABLE
+db_barang=# \d
+         List of relations
+ Schema |  Name  | Type  |  Owner
+--------+--------+-------+----------
+ public | barang | table | postgres
+(1 row)
+
+
+db_barang=# \d barang
+                        Table "public.barang"
+   Column    |         Type          | Collation | Nullable | Default
+-------------+-----------------------+-----------+----------+---------
+ id          | integer               |           | not null |
+ kategori_id | integer               |           | not null |
+ nama        | character varying(20) |           | not null |
+ harga       | integer               |           | not null |
+ stok        | integer               |           | not null |
+ created_at  | date                  |           |          |
+ updated_at  | date                  |           |          |
+Indexes:
+    "barang_pkey" PRIMARY KEY, btree (id)
+
+db_barang=# CREATE TABLE kategori (id int primary key not null, nama varchar (20) not null, created_at date, updated_at date);
+CREATE TABLE
+db_barang=# \d kategori
+                       Table "public.kategori"
+   Column   |         Type          | Collation | Nullable | Default
+------------+-----------------------+-----------+----------+---------
+ id         | integer               |           | not null |
+ nama       | character varying(20) |           | not null |
+ created_at | date                  |           |          |
+ updated_at | date                  |           |          |
+Indexes:
+    "kategori_pkey" PRIMARY KEY, btree (id)
+
+// 3. Memberi value kedalam tabel dengan query INSERT INTO //
+
+db_barang=# INSERT INTO barang (id, kategori_id, nama, harga, stok, created_at) values (1, 1, 'Indomie', 2500, 15, '2023-9-20');
+INSERT 0 1
+db_barang=# INSERT INTO barang (id, kategori_id, nama, harga, stok, created_at) values (2, 2, 'Aqua', 3000, 10, '2023-9-20');
+INSERT 0 1
+db_barang=# INSERT INTO barang (id, kategori_id, nama, harga, stok, created_at) values (3, 2, 'Le Minerale', 4000, 20, '2023-9-20');
+INSERT 0 1
+db_barang=# INSERT INTO barang (id, kategori_id, nama, harga, stok, created_at) values (4, 2, 'Vit', 3000, 20, '2023-9-20');
+INSERT 0 1
+db_barang=# INSERT INTO barang (id, kategori_id, nama, harga, stok, created_at) values (5, 1, 'Mie Sedap', 2500, 25, '2023-9-20');
+INSERT 0 1
+db_barang=# INSERT INTO barang (id, kategori_id, nama, harga, stok, created_at) values (6, 1, 'Mie Sukses', 2500, 30, '2023-9-20');
+INSERT 0 1
+db_barang=# select * from barang;
+ id | kategori_id |    nama     | harga | stok | created_at | updated_at
+----+-------------+-------------+-------+------+------------+------------
+  1 |           1 | Indomie     |  2500 |   15 | 2023-09-20 |
+  2 |           2 | Aqua        |  3000 |   10 | 2023-09-20 |
+  3 |           2 | Le Minerale |  4000 |   20 | 2023-09-20 |
+  4 |           2 | Vit         |  3000 |   20 | 2023-09-20 |
+  5 |           1 | Mie Sedap   |  2500 |   25 | 2023-09-20 |
+  6 |           1 | Mie Sukses  |  2500 |   30 | 2023-09-20 |
+(6 rows)
+
+db_barang=# INSERT INTO kategori (id, nama, created_at) values (1, 'Makanan', '2023-9-20');
+INSERT 0 1
+db_barang=# INSERT INTO kategori (id, nama, created_at) values (2, 'Minuman', '2023-9-20');
+INSERT 0 1
+db_barang=# select * from kategori;
+ id |  nama   | created_at | updated_at
+----+---------+------------+------------
+  1 | Makanan | 2023-09-20 |
+  2 | Minuman | 2023-09-20 |
+(2 rows)
+
+// 4. Melakukan Update data pada tabel dengan query UPDATE, SET, dan WHERE //
+
+db_barang=# UPDATE barang SET harga = 4000 WHERE id = 2;
+UPDATE 1
+db_barang=# UPDATE barang SET stok = 20 WHERE id = 2;
+UPDATE 1
+db_barang=# UPDATE barang SET updated_at = '2023-09-20' WHERE id = 2;
+UPDATE 1
+db_barang=# select * from barang
+db_barang-# ;
+ id | kategori_id |    nama     | harga | stok | created_at | updated_at
+----+-------------+-------------+-------+------+------------+------------
+  1 |           1 | Indomie     |  2500 |   15 | 2023-09-20 |
+  3 |           2 | Le Minerale |  4000 |   20 | 2023-09-20 |
+  4 |           2 | Vit         |  3000 |   20 | 2023-09-20 |
+  5 |           1 | Mie Sedap   |  2500 |   25 | 2023-09-20 |
+  6 |           1 | Mie Sukses  |  2500 |   30 | 2023-09-20 |
+  2 |           2 | Aqua        |  4000 |   20 | 2023-09-20 | 2023-09-20
+(6 rows)
+
+
+db_barang=# UPDATE kategori SET nama = 'Mie Instan', updated_at = '2023-09-20' WHERE id = 1;
+UPDATE 1
+db_barang=# UPDATE kategori SET nama = 'Air Mineral', updated_at = '2023-09-20' WHERE id = 2;
+UPDATE 1
+db_barang=# select * from kategori;
+ id |    nama     | created_at | updated_at
+----+-------------+------------+------------
+  1 | Mie Instan  | 2023-09-20 | 2023-09-20
+  2 | Air Mineral | 2023-09-20 | 2023-09-20
+(2 rows)
+
+// 5. Melakukan Join tabel dengan query INNER JOIN //
+
+db_barang=# SELECT barang.id, kategori_id, barang.nama, harga, stok, kategori.nama FROM barang INNER JOIN kategori ON barang.kategori_id = kategori.id;
+ id | kategori_id |    nama     | harga | stok |    nama
+----+-------------+-------------+-------+------+-------------
+  1 |           1 | Indomie     |  2500 |   15 | Mie Instan
+  3 |           2 | Le Minerale |  4000 |   20 | Air Mineral
+  4 |           2 | Vit         |  3000 |   20 | Air Mineral
+  5 |           1 | Mie Sedap   |  2500 |   25 | Mie Instan
+  6 |           1 | Mie Sukses  |  2500 |   30 | Mie Instan
+  2 |           2 | Aqua        |  4000 |   20 | Air Mineral
+(6 rows)
