@@ -1,4 +1,6 @@
+// Import the fs Module.
 const fs = require("fs");
+// Declare the sample data log.
 const payload = `
 03/22 08:54:24 INFO   :......rsvp_flow_stateMachine: state RESVED, event T1OUT
 03/22 08:54:24 TRACE  :.......rsvp_action_nHop: constructing a PATH
@@ -63,6 +65,7 @@ source=9.67.116.98:8000] ceased
 03/22 08:54:53 INFO   :......dreg_process: rc from ifaeddrg_byaddr  rc =0
 03/22 08:54:53 INFO   :.....terminator: process terminated with exit code 0`;
 
+// Write the sample data log to the log.txt file.
 fs.writeFile("log.txt", payload, (err, data) => {
   if (err) {
     console.error(err);

@@ -1,3 +1,4 @@
+// Export the count module.
 exports.count = {
   squareArea: function (side) {
     return "Square Area is : " + side ** 2;
