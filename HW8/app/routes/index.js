@@ -20,7 +20,7 @@ router.get("/", noParams);
 router.get("/films", getFilm);
 router.get("/film/:id", getFilmById);
 router.get("/films/:category", getFilmByCategory);
-router.post("/films", addFilm);
+router.post("/film", addFilm);
 router.put("/film/:id", updateFilm);
 router.delete("/film/:id", deleteFilm);
 // Categories Router
