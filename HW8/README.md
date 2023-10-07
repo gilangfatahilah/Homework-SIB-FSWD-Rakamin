@@ -1,9 +1,7 @@
 # DVDRENTAL REST API
 
 This is a simply REST API i've been created due my homework on week 8 independen study at Rakamin Academy.
-
 The entire application is builded using `node.js`, `express` and `postgresql` as a database, and this application is currently running only on local server.
-
 to use this application, you need to install the package first using the following command below on the terminal:
 
 ## Install
