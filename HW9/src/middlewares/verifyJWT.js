@@ -13,10 +13,7 @@ module.exports = {
     const secret = process.env.JWT_SECRET_KEY;
 
     try {
-      const jwtDecode = jwt.verify(token, secret);
-
-      req.emails = jwtDecode.email;
-      req.role = jwtDecode.role;
+      jwt.verify(token, secret);
     } catch (error) {
       return res.status(401).json({
         message: "Unauthorized user!",

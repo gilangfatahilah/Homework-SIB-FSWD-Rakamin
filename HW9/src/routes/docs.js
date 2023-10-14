@@ -93,15 +93,10 @@
  * components:
  *   securitySchemes:
  *
- *      BearerAuth:
+ *      Authorization:
  *         type: http
  *         scheme: bearer
  *         bearerFormat: JWT
- */
-/**
- * @swagger
- * security:
- *  - BearerAuth: []
  */
 /**
  * @swagger
@@ -165,6 +160,8 @@
  *               type: array
  *               items:
  *                 $ref: '#/components/schemas/movies'
+ *     security:
+ *       - Authorization: []
  * /movie:
  *   post:
  *     summary: Create a new movie
@@ -184,15 +181,22 @@
  *               $ref: '#/components/schemas/movies'
  *       500:
  *         description: Some error occured!
- * /movie/paginate?page={page}&size={size}:
+ *     security:
+ *       - Authorization: []
+ * /movies/paginate?page={page}&limit={limit}:
  *   get:
  *     summary: Get the movie with the paginate
  *     tags: [Movies]
  *     parameters:
- *       - in: path
- *         name: paginate
+ *       - in: query
+ *         name: page
  *         schema:
- *           type: string
+ *           type: integer
+ *         required: true
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
  *         required: true
  *     responses:
  *       200:
@@ -203,6 +207,8 @@
  *               $ref: '#/components/schemas/movies'
  *       404:
  *         description: Sorry we couldn't find the movies !
+ *     security:
+ *       - Authorization: []
  * /movie/{id}:
  *   get:
  *     summary: Get the movie by id
@@ -211,7 +217,7 @@
  *       - in: path
  *         name: id
  *         schema:
- *           type: string
+ *           type: integer
  *         required: true
  *         description: The movies id
  *     responses:
@@ -223,6 +229,8 @@
  *               $ref: '#/components/schemas/movies'
  *       404:
  *         description: Sorry we couldn't find the movies within the specified id
+ *     security:
+ *       - Authorization: []
  *   put:
  *    summary: Update the movie by the id
  *    tags: [Movies]
@@ -230,7 +238,7 @@
  *      - in: path
  *        name: id
  *        schema:
- *          type: string
+ *          type: integer
  *        required: true
  *        description: The movie id
  *    requestBody:
@@ -250,6 +258,8 @@
  *        description: Sorry we couldn't find movie within specified id
  *      500:
  *        description: Some error happened
+ *    security:
+ *      - Authorization: []
  *   delete:
  *     summary: Remove the movie by id
  *     tags: [Movies]
@@ -257,7 +267,7 @@
  *       - in: path
  *         name: id
  *         schema:
- *           type: string
+ *           type: integer
  *         required: true
  *         description: The movie id
  *
@@ -266,6 +276,8 @@
  *         description: The movie was deleted
  *       404:
  *         description: The movie was not found
+ *     security:
+ *       - Authorization: []
  */
 /**
  * @swagger
@@ -285,6 +297,8 @@
  *               type: array
  *               items:
  *                 $ref: '#/components/schemas/users'
+ *     security:
+ *       - Authorization: []
  * /user:
  *   post:
  *     summary: Create a new user
@@ -304,15 +318,22 @@
  *               $ref: '#/components/schemas/users'
  *       500:
  *         description: Some error occured!
- * /user/paginate?page={page}&size={size}:
+ *     security:
+ *       - Authorization: []
+ * /users/paginates?page={page}&limit={limit}:
  *   get:
  *     summary: Get the user with the paginate
  *     tags: [Users]
  *     parameters:
- *       - in: path
- *         name: paginate
+ *       - in: query
+ *         name: page
  *         schema:
- *           type: string
+ *           type: integer
+ *         required: true
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
  *         required: true
  *     responses:
  *       200:
@@ -323,6 +344,8 @@
  *               $ref: '#/components/schemas/users'
  *       404:
  *         description: Sorry we couldn't find the movies !
+ *     security:
+ *       - Authorization: []
  * /user/{id}:
  *   get:
  *     summary: Get the user by id
@@ -331,7 +354,7 @@
  *       - in: path
  *         name: id
  *         schema:
- *           type: string
+ *           type: integer
  *         required: true
  *         description: The users id
  *     responses:
@@ -343,6 +366,8 @@
  *               $ref: '#/components/schemas/users'
  *       404:
  *         description: Sorry we couldn't find the movies within the specified id
+ *     security:
+ *       - Authorization: []
  *   put:
  *    summary: Update the user by id
  *    tags: [Users]
@@ -350,7 +375,7 @@
  *      - in: path
  *        name: id
  *        schema:
- *          type: string
+ *          type: integer
  *        required: true
  *        description: The user id
  *    requestBody:
@@ -370,6 +395,8 @@
  *        description: Sorry we couldn't find movie within specified id
  *      500:
  *        description: Some error happened
+ *    security:
+ *      - Authorization: []
  *   delete:
  *     summary: Remove the user by id
  *     tags: [Users]
@@ -377,7 +404,7 @@
  *       - in: path
  *         name: id
  *         schema:
- *           type: string
+ *           type: integer
  *         required: true
  *         description: The user id
  *
@@ -386,4 +413,6 @@
  *         description: The user was deleted
  *       404:
  *         description: The user was not found
+ *     security:
+ *       - Authorization: []
  */

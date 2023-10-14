@@ -13,12 +13,12 @@ const options = {
     info: {
       title: "REST API Movies Documentation",
       version: "1.0.0",
-      description: "this is the REST API documentation",
+      description:
+        "this is the REST API Movies documentation, this api documentation is created due my homework project on Rakamin Academy.",
     },
-    contact: {
-      name: "Gilang Fatahilah",
-      url: "https://github.com/gilangfatahiah",
-      email: "gilangf010@gmail.com",
+    externalDocs: {
+      description: "Find out more about Swagger",
+      url: "https://swagger.io",
     },
     servers: [
       {
