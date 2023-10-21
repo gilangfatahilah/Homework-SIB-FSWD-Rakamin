@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "a76ee2b0-4b3a-4557-bcc0-f728773253b0",
+		"name": "HW-10",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26768173"
+	},
+	"item": [
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:3000/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users By Id ",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": "localhost:3000/user/100"
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"gilanasada@gimail.com\",\r\n    \"gender\": \"female\",\r\n    \"password\": \"abogoboga\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/user"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"gilanggg2222@gmail.caom\",\r\n    \"gender\": \"female\",\r\n    \"password\": \"popkakaaaak\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/user/105"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Users",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:3000/user/104"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:3000/movies"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movie By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:3000/movie/101"
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Movie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"The Amazing Spiderman\",\r\n    \"genres\": \"Action\",\r\n    \"year\": \"2019\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/movie"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Movie",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"The Amazing Spiderman 2\",\r\n    \"genres\": \"Action\",\r\n    \"year\": \"2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/movie/101"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Movie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"The Amazing Spiderman 2\",\r\n    \"genres\": \"Action\",\r\n    \"year\": \"2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/movie/101"
+			},
+			"response": []
+		}
+	]
+}
