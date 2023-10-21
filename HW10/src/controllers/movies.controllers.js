@@ -44,10 +44,10 @@ module.exports = {
 
   updateDataMovie: async (req, res, next) => {
     const id = req.params.id;
-    const { title, genres, year, photo } = req.body;
+    const { title, genres, year } = req.body;
 
     try {
-      const result = await updateMovie(id, { title, genres, year, photo });
+      const result = await updateMovie(id, { title, genres, year });
       return res.status(201).json({
         status: "success",
         message: "data updated successfully",

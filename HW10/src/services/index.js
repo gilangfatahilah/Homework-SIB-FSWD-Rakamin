@@ -12,7 +12,11 @@ const {
   updateMovie,
   deleteMovie,
 } = require("./movies.services");
-const { createMoviePhoto, findMoviePhoto } = require("./movies.photo.services");
+const {
+  createMoviePhoto,
+  findMoviePhoto,
+  findMoviePhotoWithName,
+} = require("./movies.photo.services");
 
 module.exports = {
   findUsers,
@@ -27,4 +31,5 @@ module.exports = {
   deleteMovie,
   createMoviePhoto,
   findMoviePhoto,
+  findMoviePhotoWithName,
 };

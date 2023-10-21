@@ -154,6 +154,85 @@
 				"url": "localhost:3000/movie/101"
 			},
 			"response": []
+		},
+		{
+			"name": "View Photo with Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/C:/Users/gilan/OneDrive/Gambar/wallpaper/wall1.jpg"
+						}
+					]
+				},
+				"url": "localhost:3000/movie/photo/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Upload photo with id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/C:/Users/gilan/OneDrive/Gambar/Screenshot/with-bs.png"
+						}
+					]
+				},
+				"url": "localhost:3000/movie/photo/1"
+			},
+			"response": []
+		},
+		{
+			"name": "View Photo with Query Name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/C:/Users/gilan/OneDrive/Gambar/wallpaper/wall1.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/movie/?photo=1697911426391_with-bs.png",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movie",
+						""
+					],
+					"query": [
+						{
+							"key": "photo",
+							"value": "1697911426391_with-bs.png"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

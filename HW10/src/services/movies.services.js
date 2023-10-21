@@ -45,7 +45,7 @@ module.exports = {
     result.id = id;
     return result;
   },
-  updateMovie: async (id, { title, genres, year, photo }) => {
+  updateMovie: async (id, { title, genres, year }) => {
     const isIdAvailable = await getMovieById(id);
     if (!title || !genres || !year) {
       const error = new Error(
@@ -58,7 +58,7 @@ module.exports = {
       error2.status = 404;
       throw error2;
     }
-    const result = await updateMovie(id, { title, genres, year, photo });
+    const result = await updateMovie(id, { title, genres, year });
     return result;
   },
   deleteMovie: async (id) => {

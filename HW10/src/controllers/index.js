@@ -14,7 +14,11 @@ const {
   deleteDataMovie,
 } = require("./movies.controllers");
 
-const { uploadPhoto } = require("./uploadPhotoControllers");
+const {
+  uploadPhoto,
+  viewPhotoWithId,
+  viewPhotoWithName,
+} = require("./photo.controllers");
 
 module.exports = {
   getUsers,
@@ -28,4 +32,6 @@ module.exports = {
   updateDataMovie,
   deleteDataMovie,
   uploadPhoto,
+  viewPhotoWithId,
+  viewPhotoWithName,
 };

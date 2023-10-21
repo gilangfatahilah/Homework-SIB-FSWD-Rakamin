@@ -12,15 +12,15 @@ module.exports = {
       },
       title: {
         type: DataTypes.STRING(50),
-        allowNull: false,
+        allowNull: true,
       },
       genres: {
         type: DataTypes.STRING(50),
-        allowNull: false,
+        allowNull: true,
       },
       year: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       photo: {
         type: DataTypes.STRING(50),

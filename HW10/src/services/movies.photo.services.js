@@ -1,7 +1,10 @@
+const path = require("path");
+
 const {
   insertMoviePhoto,
   getMoviePhoto,
   getMovieById,
+  getMoviePhotoByName,
 } = require("../repositories");
 
 module.exports = {
@@ -18,7 +21,7 @@ module.exports = {
       error2.status = 404;
       throw error2;
     }
-    const result = await insertMoviePhoto(id, { photo });
+    const result = await insertMoviePhoto(id, photo);
     return result;
   },
 
@@ -29,7 +32,22 @@ module.exports = {
       error2.status = 404;
       throw error2;
     }
-    const result = await getMoviePhoto(id);
-    return result;
+    const data = await getMoviePhoto(id);
+    const filename = data[0].photo;
+    const fullfillpath = path.join(__dirname, "../images/", filename);
+    return fullfillpath;
+  },
+
+  findMoviePhotoWithName: async (name) => {
+    if (!name) {
+      const error = new Error(`Sorry, we couldn't find user with this name`);
+      error.status = 404;
+      throw error;
+    }
+
+    const data = await getMoviePhotoByName(name);
+    const filename = data[0].photo;
+    const fullfillpath = path.join(__dirname, "../images/", filename);
+    return fullfillpath;
   },
 };

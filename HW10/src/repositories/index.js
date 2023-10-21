@@ -14,6 +14,7 @@ const {
   deleteMovie,
   insertMoviePhoto,
   getMoviePhoto,
+  getMoviePhotoByName,
 } = require("./movies.repositories");
 
 module.exports = {
@@ -29,4 +30,5 @@ module.exports = {
   deleteMovie,
   insertMoviePhoto,
   getMoviePhoto,
+  getMoviePhotoByName,
 };
