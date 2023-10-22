@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { photoUpload } = require("../middlewares");
+const { photoUpload, requireJsonContents } = require("../middlewares");
 const {
   getAllMovies,
   getMovieById,
@@ -16,8 +16,8 @@ router.get("/movies", getAllMovies);
 router.get("/movie/:id", getMovieById);
 router.get("/movie/photo/:id", viewPhotoWithId);
 router.get("/movie", viewPhotoWithName);
-router.post("/movie", addNewMovie);
-router.put("/movie/:id", updateDataMovie);
+router.post("/movie", requireJsonContents, addNewMovie);
+router.put("/movie/:id", requireJsonContents, updateDataMovie);
 router.put("/movie/photo/:id", photoUpload.single("photo"), uploadPhoto);
 router.delete("/movie/:id", deleteDataMovie);
 

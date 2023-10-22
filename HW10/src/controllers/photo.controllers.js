@@ -7,7 +7,7 @@ const {
 module.exports = {
   uploadPhoto: async (req, res, next) => {
     const id = req.params.id;
-    const { filename } = req.file;
+    const filename = req.file;
 
     try {
       const result = await createMoviePhoto(id, filename);
@@ -15,7 +15,7 @@ module.exports = {
         status: "success",
         messsage: "update photo successfully!",
         id: id,
-        filename: filename,
+        filename: filename.filename,
       });
     } catch (err) {
       next(err);

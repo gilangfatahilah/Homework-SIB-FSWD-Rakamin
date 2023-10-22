@@ -1,16 +1,21 @@
 const path = require("path");
-
+const fs = require("fs");
 const {
   insertMoviePhoto,
   getMoviePhoto,
   getMovieById,
   getMoviePhotoByName,
 } = require("../repositories");
+const { promisify } = require("util");
 
 module.exports = {
-  createMoviePhoto: async (id, photo) => {
+  createMoviePhoto: async (id, filename) => {
     const isIdAvailable = await getMovieById(id);
-    if (!photo) {
+    const isDataExist = await getMoviePhoto(id);
+    const filepath = path.join(__dirname, "../images/", isDataExist[0].photo);
+    const unlinkAsync = promisify(fs.unlink);
+
+    if (filename === undefined) {
       const error = new Error(
         `Bad Request, please check your data and try again!`
       );
@@ -21,7 +26,11 @@ module.exports = {
       error2.status = 404;
       throw error2;
     }
+
+    const photo = filename.filename;
     const result = await insertMoviePhoto(id, photo);
+    // delete existing photo
+    await unlinkAsync(filepath);
     return result;
   },
 
@@ -39,7 +48,7 @@ module.exports = {
   },
 
   findMoviePhotoWithName: async (name) => {
-    if (!name) {
+    if (name === undefined) {
       const error = new Error(`Sorry, we couldn't find user with this name`);
       error.status = 404;
       throw error;
