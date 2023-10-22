@@ -1,19 +1,20 @@
 const path = require("path");
 const fs = require("fs");
+const { promisify } = require("util");
 const {
   insertMoviePhoto,
   getMoviePhoto,
   getMovieById,
   getMoviePhotoByName,
 } = require("../repositories");
-const { promisify } = require("util");
 
 module.exports = {
   createMoviePhoto: async (id, filename) => {
+    const photo = filename.filename;
     const isIdAvailable = await getMovieById(id);
-    const isDataExist = await getMoviePhoto(id);
-    const filepath = path.join(__dirname, "../images/", isDataExist[0].photo);
+    const data = await getMoviePhoto(id);
     const unlinkAsync = promisify(fs.unlink);
+    let result;
 
     if (filename === undefined) {
       const error = new Error(
@@ -25,13 +26,20 @@ module.exports = {
       const error2 = new Error(`Sorry, we couldn't find user with id ${id}`);
       error2.status = 404;
       throw error2;
+    } else if (data[0].photo == null) {
+      result = await insertMoviePhoto(id, photo);
+      return result;
+    } else if (data[0].photo != null) {
+      // delete the existing data first
+      const filepath = path.join(
+        __dirname,
+        "../../public/images/",
+        data[0].photo
+      );
+      unlinkAsync(filepath);
+      result = await insertMoviePhoto(id, photo);
+      return result;
     }
-
-    const photo = filename.filename;
-    const result = await insertMoviePhoto(id, photo);
-    // delete existing photo
-    await unlinkAsync(filepath);
-    return result;
   },
 
   findMoviePhoto: async (id) => {
@@ -43,7 +51,7 @@ module.exports = {
     }
     const data = await getMoviePhoto(id);
     const filename = data[0].photo;
-    const fullfillpath = path.join(__dirname, "../images/", filename);
+    const fullfillpath = path.join(__dirname, "../../public/images/", filename);
     return fullfillpath;
   },
 
@@ -56,7 +64,7 @@ module.exports = {
 
     const data = await getMoviePhotoByName(name);
     const filename = data[0].photo;
-    const fullfillpath = path.join(__dirname, "../images/", filename);
+    const fullfillpath = path.join(__dirname, "../../public/images/", filename);
     return fullfillpath;
   },
 };

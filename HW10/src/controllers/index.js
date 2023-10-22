@@ -15,7 +15,7 @@ const {
 } = require("./movies.controllers");
 
 const {
-  uploadPhoto,
+  updatePhoto,
   viewPhotoWithId,
   viewPhotoWithName,
 } = require("./photo.controllers");
@@ -31,7 +31,7 @@ module.exports = {
   addNewMovie,
   updateDataMovie,
   deleteDataMovie,
-  uploadPhoto,
+  updatePhoto,
   viewPhotoWithId,
   viewPhotoWithName,
 };

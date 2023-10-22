@@ -5,7 +5,7 @@ const {
 } = require("../services");
 
 module.exports = {
-  uploadPhoto: async (req, res, next) => {
+  updatePhoto: async (req, res, next) => {
     const id = req.params.id;
     const filename = req.file;
 

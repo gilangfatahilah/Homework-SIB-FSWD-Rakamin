@@ -1,5 +1,5 @@
 const { requireJsonContents } = require("./requireJsonContents");
 const { errorHandler } = require("./errorHandler");
-const { photoUpload } = require("./multer");
+const { upload } = require("./multer");
 
-module.exports = { requireJsonContents, errorHandler, photoUpload };
+module.exports = { requireJsonContents, errorHandler, upload };
