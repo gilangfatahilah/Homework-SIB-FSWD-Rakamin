@@ -23,7 +23,7 @@ function Board() {
   function renderSquare(i) {
     return (
       <button
-        className="bg-orange-200 hover:bg-orange-300 m-1 w-16 h-16 text-orange-400 font-bold after:absolute"
+        className="block bg-orange-200 hover:bg-orange-300 m-1 w-16 h-16 text-orange-400 font-bold"
         onClick={() => selectSquare(i)}
       >
         {squares[i]}
@@ -36,17 +36,17 @@ function Board() {
       <h1 className="text-xl font-bold mb-5 text-orange-400">
         STATUS: {calculateStatus(winner, squares, nextValue)}
       </h1>
-      <div>
+      <div className="flex">
         {renderSquare(0)}
         {renderSquare(1)}
         {renderSquare(2)}
       </div>
-      <div>
+      <div className="flex">
         {renderSquare(3)}
         {renderSquare(4)}
         {renderSquare(5)}
       </div>
-      <div>
+      <div className="flex">
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
