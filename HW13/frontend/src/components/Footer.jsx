@@ -4,6 +4,7 @@ import {
   Box,
   chakra,
   Container,
+  Image,
   Stack,
   Text,
   useColorModeValue,
@@ -54,18 +55,25 @@ export default function Footer() {
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text fontSize="xl" fontWeight="bold">
-          Gremaida
-        </Text>
-        <Text>© 2023 All rights reserved.</Text>
+        <Image src="/Gremaida.png" alt="logo" w={20} h={10} />
+        <Text>© 2023 Gremaida. All rights reserved</Text>
         <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Github"} href={"#"}>
+          <SocialButton
+            label={"Github"}
+            href={"https://github.com/gilangfatahilah"}
+          >
             <FaGithub />
           </SocialButton>
-          <SocialButton label={"Linkedin"} href={"#"}>
+          <SocialButton
+            label={"Linkedin"}
+            href={"https://www.linkedin.com/in/gilang-fatahilah/"}
+          >
             <FaLinkedin />
           </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
+          <SocialButton
+            label={"Instagram"}
+            href={"https://instagram.com/gilanqf"}
+          >
             <FaInstagram />
           </SocialButton>
         </Stack>

@@ -5,6 +5,7 @@ import {
   FormLabel,
   HStack,
   Input,
+  Image,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -47,9 +48,7 @@ const Navbar = () => {
     >
       <Link to="/">
         <Flex align="center" mr={5} cursor="pointer">
-          <Text fontSize="xl" fontWeight="bold">
-            Gremaida
-          </Text>
+          <Image src="/Gremaida.png" alt="logo" w={20} h={10} />
         </Flex>
       </Link>
       <HStack>
