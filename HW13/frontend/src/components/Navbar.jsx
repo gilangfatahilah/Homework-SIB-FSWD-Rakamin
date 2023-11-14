@@ -41,34 +41,44 @@ const Navbar = () => {
       align="center"
       justify="space-between"
       wrap="wrap"
-      padding="1rem"
-      bg="teal.500"
-      color="white"
+      padding="1.5rem"
+      color="#FAF6F0"
+      backgroundColor="#0f0f0f"
     >
       <Link to="/">
         <Flex align="center" mr={5} cursor="pointer">
           <Text fontSize="xl" fontWeight="bold">
-            My Website
+            Gremaida
           </Text>
         </Flex>
       </Link>
       <HStack>
         {isLogin && (
           <Link to="/newbook">
-            <Button colorScheme="blackAlpha">Create New Book</Button>
+            <Button
+              backgroundColor="#FAF6F0"
+              color="#0f0f0f"
+              colorScheme="#0f0f0f"
+              variant="solid"
+              marginX={4}
+            >
+              Create New Book
+            </Button>
           </Link>
         )}
         {!isLogin ? (
-          <Button onClick={onOpen} colorScheme="blue">
+          <Button onClick={onOpen} colorScheme="#fff" variant="outline">
             Login
           </Button>
         ) : (
           <Button
-            colorScheme="blue"
+            borderColor="#fff"
+            colorScheme="#0f0f0f"
+            variant="solid"
             onClick={() => {
               window.localStorage.removeItem("token");
               setIsLogin(false);
-              navigate("/")
+              navigate("/");
             }}
           >
             Logout
@@ -101,8 +111,8 @@ const Navbar = () => {
           }}
         >
           <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Login</ModalHeader>
+          <ModalContent backgroundColor="#F4EAE0">
+            <ModalHeader fontWeight="bold">Login</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <VStack>
@@ -124,12 +134,19 @@ const Navbar = () => {
                 </FormControl>
               </VStack>
             </ModalBody>
-            <ModalFooter>
-              <Button type="submit" form="login-form" colorScheme="blue" mr={3}>
+            <ModalFooter gap={7}>
+              <Button
+                type="submit"
+                form="login-form"
+                colorScheme="#fff"
+                backgroundColor="#0f0f0f"
+                color="#fff"
+                paddingX={12}
+              >
                 Login
               </Button>
               <Link to="/register" onClick={onClose}>
-                <Button variant="ghost">
+                <Button colorScheme="Gray" variant="ghost">
                   Doesn't Have Account? Click here
                 </Button>
               </Link>

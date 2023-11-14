@@ -25,11 +25,7 @@ const Register = () => {
       return;
     }
     try {
-      await registerUser(
-        e.target.name.value,
-        e.target.email.value,
-        password
-      );
+      await registerUser(e.target.name.value, e.target.email.value, password);
       toast({
         title: "Registered",
         description: "You have successfully registered.",
@@ -52,7 +48,7 @@ const Register = () => {
   };
 
   return (
-    <Box w="full" py={4} px={24} mx="auto" mt={8}>
+    <Box w="full" py={4} px={24} mx="auto" mt={8} color="#0f0f0f">
       <Text fontSize="xl" fontWeight="bold" mb={4}>
         Register
       </Text>
